@@ -1,16 +1,16 @@
 <template>
   <div>
-    <FilmList :arrayResultMovies="arrayResultMovies" />
+    <FilmCardComp :arrayResultMovies="arrayResultMovies" />
   </div>
 </template>
 
 <script>
-import FilmList from "./FilmList.vue";
+import FilmCardComp from "./FilmCardComp.vue";
 
 export default {
-  name: "MainComp",
+  name: "FilmList",
   components: {
-    FilmList,
+    FilmCardComp,
   },
   props: {
     arrayResultMovies: Array,
