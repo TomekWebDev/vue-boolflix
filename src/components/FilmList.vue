@@ -1,6 +1,11 @@
 <template>
-  <div>
-    <FilmCardComp :arrayResultMovies="arrayResultMovies" />
+  <div class="d-flex py-2 overflow-auto">
+    <FilmCardComp
+      class="cardio border border-2 border-dark my-2"
+      v-for="(elem, index) in arrayResultMovies"
+      :key="index"
+      :movieObj="elem"
+    />
   </div>
 </template>
 
@@ -19,4 +24,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.cardio {
+  width: 342px;
+}
 </style>
