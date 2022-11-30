@@ -1,19 +1,23 @@
 <template>
   <div class="bg-dark">
-    <FilmList :arrayResultMovies="arrayResultMovies" />
+    <FilmList :movieResultsArray="movieResultsArray" />
+    <TvShowList :tvShowResultsArray="tvShowResultsArray" />
   </div>
 </template>
 
 <script>
 import FilmList from "./FilmList.vue";
+import TvShowList from "./TvShowList.vue";
 
 export default {
   name: "MainComp",
   components: {
     FilmList,
+    TvShowList,
   },
   props: {
-    arrayResultMovies: Array,
+    movieResultsArray: Array,
+    tvShowResultsArray: Array,
   },
 };
 </script>

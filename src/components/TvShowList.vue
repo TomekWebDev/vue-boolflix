@@ -1,21 +1,22 @@
 <template>
   <div class="d-flex py-5 film-list">
-    <FilmCardComp
+    <TvShowCardComp
       class="cardio my-2 mx-1"
       v-for="(elem, index) in movieResultsArray"
       :key="index"
       :movieObj="elem"
     />
+    <TvShowCardComp />
   </div>
 </template>
 
 <script>
-import FilmCardComp from "./FilmCardComp.vue";
+import TvShowCardComp from "./TvShowCardComp.vue";
 
 export default {
-  name: "FilmList",
+  name: "TvShowList",
   components: {
-    FilmCardComp,
+    TvShowCardComp,
   },
   props: {
     movieResultsArray: Array,

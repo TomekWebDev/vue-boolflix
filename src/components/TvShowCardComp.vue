@@ -65,7 +65,7 @@
 
 <script>
 export default {
-  name: "FilmCardComp",
+  name: "TvShowCardComp",
   data() {
     return {
       halfVote: 0,

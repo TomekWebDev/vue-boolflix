@@ -5,7 +5,7 @@
       v-model="searchText"
       type="text"
       placeholder="Search movie..."
-      @keyup.enter="$emit('searchTextHeader', searchText), starsRating()"
+      @keyup.enter="$emit('searchTextHeader', searchText)"
     />
   </div>
 </template>
