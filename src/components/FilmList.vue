@@ -1,7 +1,7 @@
 <template>
-  <div class="d-flex py-2 overflow-auto">
+  <div class="d-flex py-5 film-list">
     <FilmCardComp
-      class="cardio border border-2 border-dark my-2"
+      class="cardio my-2 mx-1"
       v-for="(elem, index) in arrayResultMovies"
       :key="index"
       :movieObj="elem"
@@ -25,6 +25,13 @@ export default {
 
 <style lang="scss" scoped>
 .cardio {
-  width: 342px;
+  width: 200px;
+}
+.cardio:hover {
+  scale: 1.2;
+  transition: all 0.2s;
+}
+.film-list {
+  overflow-x: scroll;
 }
 </style>
