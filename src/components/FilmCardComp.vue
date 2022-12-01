@@ -1,5 +1,7 @@
 <template>
   <div class="card-hover-trigger d-flex">
+    {{ starsRating() }}
+
     <img
       class="movie-img"
       :src="`http://image.tmdb.org/t/p/w342/${movieObj.poster_path}`"
@@ -46,7 +48,11 @@
           {{ movieObj.vote_average }}/10
         </span>
         <div class="stars">
-          <div class="d-inline" v-for="n in fullStars" :key="n">
+          <div
+            class="d-inline"
+            v-for="n in fullStars"
+            :key="'movieFullStarsKey' + n"
+          >
             <font-awesome-icon icon="fa-solid fa-star" />
           </div>
 
@@ -54,9 +60,16 @@
             <font-awesome-icon icon="fa-regular fa-star-half-stroke" />
           </div>
 
-          <div class="d-inline" v-for="n in emptyStars" :key="n">
+          <div
+            class="d-inline"
+            v-for="n in emptyStars"
+            :key="'movieEmptyStarsKey' + n"
+          >
             <font-awesome-icon icon="fa-regular fa-star" />
           </div>
+        </div>
+        <div v-for="elem in thisMovieGenresNameArray" :key="elem">
+          {{ elem }}
         </div>
       </div>
     </div>
@@ -72,14 +85,17 @@ export default {
       fullStars: 0,
       emptyStars: 0,
       halfStar: false,
+      thisMovieGenresArray: this.movieObj.genre_ids, // sono solo gli id dei generi
+      thisMovieGenresNameArray: [],
     };
   },
   props: {
     movieObj: Object,
+    movieGenresListArray: Array, // legenda dei generi: array con dentro oggetti con 2 proprietà (id e nome)
   },
   methods: {
     starsRating() {
-      //divido per 2 il voto medio
+      // divido per 2 il voto medio
       this.halfVote = this.movieObj.vote_average / 2;
 
       // controllo se il voto a metà è un numero intero o no
@@ -94,13 +110,31 @@ export default {
       }
       // in questo caso non c'è nessuna mezza stella
       else {
+        this.halfStar = false;
         this.fullStars = this.halfVote;
         this.emptyStars = 5 - this.fullStars;
       }
     },
+    convertGenresIdToNames() {
+      for (let a = 0; a < this.thisMovieGenresArray.length; a++) {
+        let genre = this.thisMovieGenresArray[a];
+        // console.log(genre);
+        for (let j = 0; j < this.movieGenresListArray.length; j++) {
+          let genreObj = this.movieGenresListArray[j];
+          let genreID = genreObj.id;
+          let genreName = genreObj.name;
+
+          if (genre == genreID) {
+            this.thisMovieGenresNameArray.push(genreName);
+          }
+
+          // console.log(genreID, genreName);
+        }
+      }
+    },
   },
   mounted() {
-    this.starsRating();
+    this.convertGenresIdToNames();
   },
 };
 </script>

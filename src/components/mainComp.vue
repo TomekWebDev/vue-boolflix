@@ -1,7 +1,13 @@
 <template>
   <div class="bg-dark">
-    <FilmList :movieResultsArray="movieResultsArray" />
-    <TvShowList :tvShowResultsArray="tvShowResultsArray" />
+    <FilmList
+      :movieResultsArray="movieResultsArray"
+      :movieGenresListArray="movieGenresListArray"
+    />
+    <TvShowList
+      :tvShowResultsArray="tvShowResultsArray"
+      :tvShowGenresListArray="tvShowGenresListArray"
+    />
   </div>
 </template>
 
@@ -18,6 +24,8 @@ export default {
   props: {
     movieResultsArray: Array,
     tvShowResultsArray: Array,
+    movieGenresListArray: Array,
+    tvShowGenresListArray: Array,
   },
 };
 </script>

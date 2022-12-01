@@ -2,9 +2,9 @@
   <div class="d-flex py-5 film-list">
     <TvShowCardComp
       class="cardio my-2 mx-1"
-      v-for="(elem, index) in movieResultsArray"
+      v-for="(elem, index) in tvShowResultsArray"
       :key="index"
-      :movieObj="elem"
+      :tvShowObj="elem"
     />
     <TvShowCardComp />
   </div>
@@ -19,7 +19,7 @@ export default {
     TvShowCardComp,
   },
   props: {
-    movieResultsArray: Array,
+    tvShowResultsArray: Array,
   },
 };
 </script>

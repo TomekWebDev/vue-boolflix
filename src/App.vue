@@ -4,6 +4,8 @@
     <MainComp
       :movieResultsArray="movieResults"
       :tvShowResultsArray="tvShowResults"
+      :movieGenresListArray="movieGenresList"
+      :tvShowGenresListArray="tvShowGenresList"
     />
   </div>
 </template>
@@ -31,9 +33,13 @@ export default {
       tvShowSearchQueryUrl: "",
       movieResults: [],
       tvShowResults: [],
+      movieGenresList: [],
+      tvShowGenresList: [],
     };
   },
-  mounted() {},
+  mounted() {
+    this.getGenresList();
+  },
   methods: {
     searchMovie(searchTextHeader) {
       this.searchTextFromHeaderToApp = searchTextHeader;
@@ -59,6 +65,22 @@ export default {
       axios.get(this.tvShowSearchQueryUrl).then((response) => {
         this.tvShowResults = response.data.results;
       });
+    },
+    getGenresList() {
+      axios
+        .get(
+          "https://api.themoviedb.org/3/genre/movie/list?api_key=d898f94bef33f317898b95a79164569c"
+        )
+        .then((response) => {
+          this.movieGenresList = response.data.genres;
+        });
+      axios
+        .get(
+          "https://api.themoviedb.org/3/genre/tv/list?api_key=d898f94bef33f317898b95a79164569c"
+        )
+        .then((response) => {
+          this.tvShowGenresList = response.data.genres;
+        });
     },
   },
 };

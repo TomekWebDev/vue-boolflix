@@ -5,6 +5,7 @@
       v-for="(elem, index) in movieResultsArray"
       :key="index"
       :movieObj="elem"
+      :movieGenresListArray="movieGenresListArray"
     />
   </div>
 </template>
@@ -19,6 +20,7 @@ export default {
   },
   props: {
     movieResultsArray: Array,
+    movieGenresListArray: Array,
   },
 };
 </script>
